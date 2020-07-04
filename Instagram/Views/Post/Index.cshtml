@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Instagram.Models.ViewModels.PostViewModel>
+
+@{
+    ViewBag.Title = "View";
+}
+<div id="main">
+        @foreach (var item in Model)
+        {   
+            <div class="col-12 d-flex post">
+                <div class="card mb-4 box-shadow">
+                    <h3>@item.UserId</h3>
+                    <p>@item.CreationTime</p>
+                    <img class="card-img-top img-thumbnail post-img" src="@item.Photo" alt="img" style=" width: 100%; display: block;" data-holder-rendered="true">
+                    <div class="card-body">
+                        <p class="card-text">@item.Description</p>
+                        <div >
+                            <div class="btn-group d-flex justify-content-between align-content-between ">
+                                <div id="@item.Id" class=" d-flex text-muted">@item.Likes</div>
+                                <button type="button" id="@item.Id" class="col-3 btn btn-default like-btn">
+                                    <i class="fa fa-heart-o heart" aria-hidden="true"></i> 
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+</div>
+
+@section Scripts
+{
+    <script>
+        $(".btn").click((e) => {
+            $.ajax({
+                type: "POST",
+                url: "Post/Like/" + e.target.id,
+                success: () => {
+                    var id = e.target.id;
+                    var text = $("#" + id)[0].innerText;
+                    var likes = parseInt(text) + 1;
+                    $("#" + id).text(likes);
+                },
+                error: (ex) => {
+                    alert(ex);
+                }
+            });
+
+        });
+
+
+    </script>
+}
