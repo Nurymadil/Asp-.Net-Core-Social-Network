@@ -3,48 +3,46 @@
 @{
     ViewBag.Title = "View";
 }
-<div id="main">
-        @foreach (var item in Model)
-        {   
-            <div class="col-12 d-flex post">
-                <div class="card mb-4 box-shadow">
-                    <h3>@item.UserId</h3>
-                    <p>@item.CreationTime</p>
-                    <img class="card-img-top img-thumbnail post-img" src="@item.Photo" alt="img" style=" width: 100%; display: block;" data-holder-rendered="true">
-                    <div class="card-body">
-                        <p class="card-text">@item.Description</p>
-                        <div >
-                            <div class="btn-group d-flex justify-content-between align-content-between ">
-                                <div id="@item.Id" class=" d-flex text-muted">@item.Likes</div>
-                                <button type="button" id="@item.Id" class="col-3 btn btn-default like-btn">
-                                    <i class="fa fa-heart-o heart" aria-hidden="true"></i> 
-                                </button>
-                            </div>
-                        </div>
+<div id="main" class="align-content-center">
+    @foreach (var item in Model)
+    {
+        <div class="col-12 d-flex post">
+            <div class="card mb-4 box-shadow">
+                <h3>@item.</h3>
+                <p>@item.CreationTime</p>
+                <img class="card-img-top img-thumbnail post-img" src="@item.Photo" alt="img" style=" width: 100%; display: block;" data-holder-rendered="true">
+                <div class="card-body">
+                    <p class="card-text">@item.Description</p>
+                    <div class="btn-group d-flex justify-content-between">
+                            <div id="@item.Id" class=" d-flex text-muted">@item.Likes.Count</div>
+                            <button type="button" data-id="@item.Id" class="col-3 btn  like-btn" >
+                                <i class="fa fa-heart-o heart" aria-hidden="true"></i> 
+                            </button>
                     </div>
                 </div>
             </div>
-        }
+        </div>
+    }
 </div>
 
 @section Scripts
 {
     <script>
-        $(".btn").click((e) => {
+        $(".btn").click(function(e) {
+            var curElement = $(this);
             $.ajax({
                 type: "POST",
-                url: "Post/Like/" + e.target.id,
-                success: () => {
-                    var id = e.target.id;
-                    var text = $("#" + id)[0].innerText;
-                    var likes = parseInt(text) + 1;
-                    $("#" + id).text(likes);
+                url: "Post/Like",
+                data: { id: curElement.attr("data-id")},
+                success: (data) => {
+                    $("#" + curElement.attr("data-id"))[0].innerText = data.count;
                 },
-                error: (ex) => {
-                    alert(ex);
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR.responseText);
+                    console.log(textStatus);
+                    console.log(errorThrown);
                 }
             });
-
         });
 
 

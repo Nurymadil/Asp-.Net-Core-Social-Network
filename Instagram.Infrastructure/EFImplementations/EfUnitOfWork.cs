@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Instagram.Data;
-using Instagram.Interfaces;
-using Instagram.Models;
+using Infrastructure.EntityFramework;
+using Instagram.Domain;
 using Microsoft.AspNetCore.Identity;
 
 namespace Instagram.Infrastructure.EFImplementations
 {
-    class EfUnitOfWork : IUnitOfWorks
+  public  class EfUnitOfWork : IUnitOfWorks
     {
         private readonly ApplicationDbContext _context;
         //ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());

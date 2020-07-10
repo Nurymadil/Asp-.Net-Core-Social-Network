@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Instagram.Domain;
 using Instagram.Models;
 using Instagram.Models.ViewModels;
 
@@ -11,6 +12,8 @@ namespace Instagram.MapperModules
         {
             CreateMap<Post, PostViewModel>();
             CreateMap<PostViewModel, Post>();
+            CreateMap<Post, CreatePostViewModel>();
+            CreateMap<CreatePostViewModel, Post>();
         }
     }
 }

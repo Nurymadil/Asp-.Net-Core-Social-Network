@@ -1,6 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instagram", "Instagram\Instagram.csproj", "{447F806C-FB22-469C-A426-54709E1D7A17}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Instagram", "Instagram\Instagram.csproj", "{447F806C-FB22-469C-A426-54709E1D7A17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstagramWebApi", "InstagramWebApi\InstagramWebApi.csproj", "{EE10C585-AB11-4AA2-BD04-80061901A08F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instagram.Domain", "Instagram.Domain\Instagram.Domain.csproj", "{C465B629-1208-4634-946E-9F078FB3990E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Database", "Instagram.Infrastructure\Infrastructure.Database.csproj", "{382A9A93-12FE-469D-9AF7-247F39306C37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.EntityFramerworkCore", "Infrastructure.EntityFramerworkCore\Infrastructure.EntityFramerworkCore.csproj", "{2FB5CAA8-DCA9-42C2-BFA2-04DC36AD1243}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +23,27 @@ Global
 		{447F806C-FB22-469C-A426-54709E1D7A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{447F806C-FB22-469C-A426-54709E1D7A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{447F806C-FB22-469C-A426-54709E1D7A17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE10C585-AB11-4AA2-BD04-80061901A08F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE10C585-AB11-4AA2-BD04-80061901A08F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE10C585-AB11-4AA2-BD04-80061901A08F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE10C585-AB11-4AA2-BD04-80061901A08F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C465B629-1208-4634-946E-9F078FB3990E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C465B629-1208-4634-946E-9F078FB3990E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C465B629-1208-4634-946E-9F078FB3990E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C465B629-1208-4634-946E-9F078FB3990E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{382A9A93-12FE-469D-9AF7-247F39306C37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{382A9A93-12FE-469D-9AF7-247F39306C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{382A9A93-12FE-469D-9AF7-247F39306C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{382A9A93-12FE-469D-9AF7-247F39306C37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FB5CAA8-DCA9-42C2-BFA2-04DC36AD1243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FB5CAA8-DCA9-42C2-BFA2-04DC36AD1243}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FB5CAA8-DCA9-42C2-BFA2-04DC36AD1243}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FB5CAA8-DCA9-42C2-BFA2-04DC36AD1243}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8F2952F0-354A-4E30-992C-747B9B80FF44}
 	EndGlobalSection
 EndGlobal

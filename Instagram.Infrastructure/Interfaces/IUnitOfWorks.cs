@@ -1,7 +1,6 @@
-﻿using Instagram.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 
-namespace Instagram.Interfaces
+namespace Instagram.Domain
 {
     public interface IUnitOfWorks
     {

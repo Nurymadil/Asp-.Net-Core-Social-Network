@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Instagram.Data;
-using Instagram.Interfaces;
+using Infrastructure.EntityFramework;
+using Instagram.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

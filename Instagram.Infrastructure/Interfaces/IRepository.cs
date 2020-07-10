@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Instagram.Interfaces
+namespace Instagram.Domain
 {
     public interface IRepository<T> where T : class
     {

@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Instagram.Data;
-using Instagram.Interfaces;
-using Instagram.Models;
+using Infrastructure.EntityFramework;
+using Instagram.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace Instagram.Infrastructure.EFImplementations
 {
-    public class PostRepository:IRepository<Post>
+    public class PostRepository : IRepository<Post>
     {
         private readonly ApplicationDbContext _context;
 
@@ -19,11 +18,11 @@ namespace Instagram.Infrastructure.EFImplementations
         }
         public Post Get(int id)
         {
-            return _context.Posts.Find(id);
+            return _context.Posts.Include(x => x.Coments).Include(x => x.Likes).FirstOrDefault(x => x.Id == id);
         }
-        public  IList<Post> GetAll()
+        public IList<Post> GetAll()
         {
-            return _context.Posts.ToList();
+            return _context.Posts.Include(x => x.Coments).Include(x => x.Likes).ToList();
         }
         public void Create(Post entity)
         {
