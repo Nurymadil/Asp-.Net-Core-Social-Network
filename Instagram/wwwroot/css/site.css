@@ -75,16 +75,6 @@ body {
 
 
 /* Like button*/
-.fa-heart-o {
-    color: red;
-    cursor: pointer;
-}
-
-.fa-heart {
-    color: red;
-    cursor: pointer;
-}
-
 
 /*Post image*/
 /*.post-img {
@@ -93,67 +83,96 @@ body {
 }*/
 
 /*heart*/
-.fa-heart-o {
-    height: 50px;
-    width: 50px;
+
+/* Coment */
+.coment {
+    background: 0 0;
+    border: 0;
+    display: flex;
+    flex-grow: 1;
+    font-size: inherit;
+    max-height: 80px;
+    outline: 0;
+    padding: 0;
+    resize: none;
+    width: 0;
+}
+textarea {
+    resize: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.menu-item {
+    font-size: 28px;
+    margin: 0 5px 0 5px;
+}
+
+.post-img {
+    height: 614px;
+    width: 614px;
+}
+
+.section {
+}
+
+.navbar {
+    border-bottom: 1px solid;
+}
+
+.like-btn {
+    height: 16px;
+    width: 16px;
+    transition: 0.5s;
+    border: none;
+    color: black;
+}
+
+.like-btn:hover {
+    transition: 0.5s;
     color: red;
-    cursor: pointer;
 }
 
-.fa-heart {
-    height: 50px;
-    width: 50px;
+.like-btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.liked {
     color: red;
-    cursor: pointer;
 }
 
-
-.btn-group > .btn {
-    flex: 0;
+.liked:hover {
+    transition: 0.5s;
+    color: black;
 }
 
-/*.heart {
-    background-color: black;
-    height: 30px;
-    transform: rotate(-45deg);
-    width: 30px;
+textarea {
+    resize: none;
+    overflow: hidden;
 }
 
-    .heart:before,
-    .heart:after {
-        content: "";
-        background-color: black;
-        border-radius: 50%;
-        height: 30px;
-        position: absolute;
-        width: 30px;
-    }
-
-    .heart:before {
-        top: -15px;
-        left: 0;
-    }
-
-.heart-liked {
-    transition: .5s;
-    background-color: red;
-    height: 30px;
-    transform: rotate(-45deg);
-    width: 30px;
+.comentaries {
 }
 
-    .heart-liked:before,
-    .heart-liked:after {
-        content: "";
-        background-color: red;
-        border-radius: 50%;
-        height: 30px;
-        position: absolute;
-        width: 30px;
-    }
-
-.heart:before {
-    top: -15px;
-    left: 0;
+.hide-btn {
+    box-sizing: content-box;
+    margin: 0px 210px 0px 210px;
 }
-*/
+
+li {
+    list-style: none;
+    margin-bottom: 10px;
+}

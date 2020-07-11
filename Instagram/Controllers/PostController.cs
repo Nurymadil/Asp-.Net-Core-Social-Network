@@ -26,6 +26,7 @@ namespace Instagram.Controllers
         private readonly IMapper _mapper;
         private string UserId { get; set; }
         private readonly IWebHostEnvironment _environment;
+
         public PostController(IUnitOfWorks uow, IMapper mapper, IHttpContextAccessor httpContextAccessor, IWebHostEnvironment environment)
         {
             _uow = uow;
@@ -99,6 +100,21 @@ namespace Instagram.Controllers
 
         }
 
-
+        [HttpPost]
+        public JsonResult AddComent(string id, string text)
+        {
+            int.TryParse(id, out var postId);
+            var post = _uow.Posts.Get(postId);
+            var coment = new Coment
+            {
+                Post = post,
+                Text = text,
+                UserId = post.UserId
+            };
+            post.Coments.Add(coment);
+            _uow.Posts.Edit(post);
+            _uow.Save();
+            return Json(true);
+        }
     }
 }

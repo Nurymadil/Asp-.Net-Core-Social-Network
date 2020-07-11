@@ -2,38 +2,87 @@
 
 @{
     ViewBag.Title = "View";
-}
+} @*<div class="col-12 d-flex post">
+        <div class="card mb-4 box-shadow">
+            <h3>@item.UserId</h3>
+            <p>@item.CreationTime</p>
+            <img class="card-img-top img-thumbnail post-img" src="@item.Photo" alt="img" style=" width: 100%; display: block;" data-holder-rendered="true">
+            <div class="card-body">
+                <p class="card-text">@item.Description</p>
+                <div class="btn-group d-flex justify-content-between">
+                    <div id="@item.Id" class=" d-flex text-muted">@item.Likes.Count</div>
+                    <button type="button" data-id="@item.Id" class="col-3 btn  like-btn" >
+                        <i class="fa fa-heart-o heart" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <hr/>
+                <div class="d-flex ">
+                    <textarea class="coment col-11 border-0" style="resize: none" aria-label="Add coment..." placeholder="Add coment..." aria-autocomplete="off" autocorrect="off"> </textarea>
+                    <button class="col-1 btn text-primary disabled">Add</button>
+                    </div>
+            </div>
+        </div>
+    </div>*@
 <div id="main" class="align-content-center">
     @foreach (var item in Model)
     {
-        <div class="col-12 d-flex post">
-            <div class="card mb-4 box-shadow">
-                <h3>@item.</h3>
-                <p>@item.CreationTime</p>
-                <img class="card-img-top img-thumbnail post-img" src="@item.Photo" alt="img" style=" width: 100%; display: block;" data-holder-rendered="true">
-                <div class="card-body">
-                    <p class="card-text">@item.Description</p>
-                    <div class="btn-group d-flex justify-content-between">
-                            <div id="@item.Id" class=" d-flex text-muted">@item.Likes.Count</div>
-                            <button type="button" data-id="@item.Id" class="col-3 btn  like-btn" >
-                                <i class="fa fa-heart-o heart" aria-hidden="true"></i> 
-                            </button>
+
+        <section class="d-flex">
+            <div class="d-flex flex-column">
+                <div class="stories"></div>
+                <div class="posts">
+                    <div class="post row m-5">
+                        <div class="col-6">
+                            <div class="thumbnail">
+                                <h3>@item.UserId</h3>
+                                <img class="post-img" src="@item.Photo" alt="" />
+                                <p>@item.Description</p>
+                            </div>
+                            <div class="post-details">
+                                <section class="d-flex">
+                                    <button type="button" data-id="@item.Id" class="like-btn btn">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                                    <p class="mt-4" id="@item.Id">@item.Likes.Count</p>
+                                </section>
+                                <section class="d-flex mt-4 ml-5">
+                                    <textarea class="coment-text-input"
+                                              rows="1"
+                                              cols="150"
+                                              placeholder="Add coment..."></textarea>
+                                    <button type="button" class="btn text-link add-coment">Add</button>
+                                </section>
+                                <section class="coment-section d-flex flex-column">
+                                    <button type="button" class="btn hide-btn" data-toggle="collapse" data-target="#toggle">
+                                        Show coments
+                                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                    </button>
+                                    <ul class="comentaries collapse" id="toggle">
+                                        <li>
+                                            <p>Британский</p>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <div></div>
+        </section>
     }
 </div>
 
 @section Scripts
 {
     <script>
-        $(".btn").click(function(e) {
+        $(".like-btn").click(function (e) {
             var curElement = $(this);
+            alert(curElement.attr("data-id"));
             $.ajax({
                 type: "POST",
                 url: "Post/Like",
-                data: { id: curElement.attr("data-id")},
+                data: { id: curElement.attr("data-id") },
                 success: (data) => {
                     $("#" + curElement.attr("data-id"))[0].innerText = data.count;
                 },
@@ -44,7 +93,22 @@
                 }
             });
         });
+        $(".add-coment").click(function (e) {
+            var listComents = $(this).parent().parent();
+            console.log(listComents.find(".coment-text-input"));
+            var text = listComents.find(".coment-text-input").val();
+            $.ajax({
+                type: "POST",
+                url: "Post/AddComent",
+                data: { id: listComents.find(".like-btn").attr("data-id"), text: text },
+                success: (data) => {
+                    listComents.find(".comentaries").append($("<p></p>").text(text));
+                },
+                error: function (s) {
+                    alert(s);
+                }
 
-
+            });
+        });
     </script>
 }

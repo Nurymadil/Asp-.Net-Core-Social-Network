@@ -15,3 +15,10 @@ $(document).ready(function(){
     }
   });
 });
+$(".like-btn").click(function (e) {
+    var curElement = $(this);
+    var liked = $(this).hasClass("liked");
+    if (liked == true) curElement.removeClass("liked");
+    else curElement.addClass("liked");
+});
+autosize($(".coment-text-input"));
